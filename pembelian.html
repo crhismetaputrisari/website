@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembelian Produk</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Pembelian Produk</h1>
+    </header>
+
+    <div class="purchase">
+        <h2>Formulir Pembelian</h2>
+        <form action="proses_pembelian.php" method="POST">
+            <!-- Nama Produk -->
+            <label for="product">Produk:</label>
+            <input type="text" id="product" name="product" readonly>
+            
+            <!-- Nama Pelanggan -->
+            <label for="name">Nama Anda:</label>
+            <input type="text" id="name" name="name" required>
+
+            <!-- Email -->
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <!-- Alamat -->
+            <label for="address">Alamat:</label>
+            <textarea id="address" name="address" required></textarea>
+
+            <!-- Tombol Submit -->
+            <button type="submit">Pesan Sekarang</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>Hubungi Kami: <a href="mailto:chrismetaputrisari@gmail.com">chrismetaputrisari@gmail.com</a></p>
+        <p>© 2024 Pemasaran Produk Online. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Mengambil parameter "product" dari URL
+        const params = new URLSearchParams(window.location.search);
+        const product = params.get('product');
+        
+        // Mengisi input produk berdasarkan parameter
+        const productInput = document.getElementById('product');
+        if (product) {
+            productInput.value = product.replace(/-/g, ' ').toUpperCase();
+        } else {
+            productInput.value = 'Tidak ada produk dipilih';
+        }
+    </script>
+</body>
+</html>
